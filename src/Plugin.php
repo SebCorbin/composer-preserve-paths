@@ -43,12 +43,13 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-        ScriptEvents::PRE_PACKAGE_INSTALL => 'prePackage',
-        ScriptEvents::POST_PACKAGE_INSTALL => 'postPackage',
-        ScriptEvents::PRE_PACKAGE_UPDATE => 'prePackage',
-        ScriptEvents::POST_PACKAGE_UPDATE => 'postPackage',
-        ScriptEvents::PRE_PACKAGE_UNINSTALL => 'prePackage',
-        ScriptEvents::POST_PACKAGE_UNINSTALL => 'postPackage',
+            ScriptEvents::PRE_INSTALL_CMD => array('prePackage', -10),
+            ScriptEvents::PRE_PACKAGE_INSTALL => 'prePackage',
+            ScriptEvents::POST_PACKAGE_INSTALL => 'postPackage',
+            ScriptEvents::PRE_PACKAGE_UPDATE => 'prePackage',
+            ScriptEvents::POST_PACKAGE_UPDATE => 'postPackage',
+            ScriptEvents::PRE_PACKAGE_UNINSTALL => 'prePackage',
+            ScriptEvents::POST_PACKAGE_UNINSTALL => 'postPackage',
         );
     }
 
